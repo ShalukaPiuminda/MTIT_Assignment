@@ -10,6 +10,7 @@ import {
 import { ApiBody, ApiParam, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
+import { UpdateCustomerDto } from './dto/update-customer.dto';
 
 @Controller('customers')
 export class CustomerController {
@@ -41,9 +42,9 @@ export class CustomerController {
   @Put(':id')
   @ApiOperation({ summary: 'Update a customer' })
   @ApiParam({ name: 'id', description: 'Customer ID' })
-  @ApiBody({ type: CreateCustomerDto })
+  @ApiBody({ type: UpdateCustomerDto })
   @ApiResponse({ status: 200, description: 'Customer updated' })
-  update(@Param('id') id: string, @Body() body: CreateCustomerDto) {
+  update(@Param('id') id: string, @Body() body: UpdateCustomerDto) {
     return this.service.update(id, body);
   }
 

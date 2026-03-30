@@ -10,6 +10,7 @@ import {
 import { ApiBody, ApiParam, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { UpdateOrderDto } from './dto/update-order.dto';
 
 @Controller('orders')
 export class OrderController {
@@ -41,9 +42,9 @@ export class OrderController {
   @Put(':id')
   @ApiOperation({ summary: 'Update an order' })
   @ApiParam({ name: 'id', description: 'Order ID' })
-  @ApiBody({ type: CreateOrderDto })
+  @ApiBody({ type: UpdateOrderDto })
   @ApiResponse({ status: 200, description: 'Order updated' })
-  update(@Param('id') id: string, @Body() body: CreateOrderDto) {
+  update(@Param('id') id: string, @Body() body: UpdateOrderDto) {
     return this.service.update(id, body);
   }
 
