@@ -12,7 +12,8 @@ const swaggerOptions = {
     openapi: '3.0.0',
     info: {
       title: 'E-Commerce Microservices API Gateway',
-      description: 'API Gateway that proxies requests to microservices (Product, Customer, Order, Inventory). Each service has its own Swagger UI at /api on their respective ports.',
+      description:
+        'API Gateway that proxies requests to microservices (Product, Customer, Order, Inventory). Each service has its own Swagger UI at /api on their respective ports.',
       version: '1.0.0',
       contact: {
         name: 'API Gateway',
@@ -49,7 +50,8 @@ const swaggerOptions = {
       '/products': {
         get: {
           summary: 'Get all products',
-          description: 'Retrieves a list of all products from Product Service (5001)',
+          description:
+            'Retrieves a list of all products from Product Service (5001)',
           tags: ['Products'],
           responses: {
             '200': { description: 'List of products' },
@@ -88,7 +90,8 @@ const swaggerOptions = {
       '/customers': {
         get: {
           summary: 'Get all customers',
-          description: 'Retrieves a list of all customers from Customer Service (5002)',
+          description:
+            'Retrieves a list of all customers from Customer Service (5002)',
           tags: ['Customers'],
           responses: {
             '200': { description: 'List of customers' },
@@ -125,7 +128,8 @@ const swaggerOptions = {
       '/orders': {
         get: {
           summary: 'Get all orders',
-          description: 'Retrieves a list of all orders from Order Service (5004)',
+          description:
+            'Retrieves a list of all orders from Order Service (5004)',
           tags: ['Orders'],
           responses: {
             '200': { description: 'List of orders' },
@@ -146,9 +150,26 @@ const swaggerOptions = {
                     customerId: { type: 'string' },
                     productId: { type: 'string' },
                     quantity: { type: 'integer', example: 2 },
-                    status: { type: 'string', enum: ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'] },
+                    status: {
+                      type: 'string',
+                      enum: [
+                        'pending',
+                        'confirmed',
+                        'shipped',
+                        'delivered',
+                        'cancelled',
+                      ],
+                    },
                     shippingAddress: { type: 'string' },
-                    paymentMethod: { type: 'string', enum: ['card', 'cash_on_delivery', 'bank_transfer', 'wallet'] },
+                    paymentMethod: {
+                      type: 'string',
+                      enum: [
+                        'card',
+                        'cash_on_delivery',
+                        'bank_transfer',
+                        'wallet',
+                      ],
+                    },
                   },
                 },
               },
@@ -162,7 +183,8 @@ const swaggerOptions = {
       '/inventory': {
         get: {
           summary: 'Get all inventory records',
-          description: 'Retrieves all inventory records from Inventory Service (5003)',
+          description:
+            'Retrieves all inventory records from Inventory Service (5003)',
           tags: ['Inventory'],
           responses: {
             '200': { description: 'List of inventory records' },
@@ -170,7 +192,8 @@ const swaggerOptions = {
         },
         post: {
           summary: 'Create an inventory record',
-          description: 'Creates a new inventory record in Inventory Service (5003)',
+          description:
+            'Creates a new inventory record in Inventory Service (5003)',
           tags: ['Inventory'],
           requestBody: {
             required: true,
@@ -182,7 +205,10 @@ const swaggerOptions = {
                   properties: {
                     productId: { type: 'string' },
                     quantity: { type: 'integer', example: 100 },
-                    warehouseLocation: { type: 'string', example: 'Warehouse-A' },
+                    warehouseLocation: {
+                      type: 'string',
+                      example: 'Warehouse-A',
+                    },
                     reservedQuantity: { type: 'integer' },
                     reorderLevel: { type: 'integer' },
                     supplierName: { type: 'string' },
@@ -204,11 +230,15 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 // Add Swagger UI route
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-  swaggerOptions: {
-    url: '/api-json',
-  },
-}));
+app.use(
+  '/api',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    swaggerOptions: {
+      url: '/api-json',
+    },
+  }),
+);
 
 // Serve Swagger JSON
 app.get('/api-json', (req, res) => {
@@ -263,10 +293,18 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`\n✅ API Gateway running on http://localhost:${PORT}`);
   console.log('\nAvailable routes:');
-  console.log(`  GET/POST http://localhost:${PORT}/products   → Product Service (5001)`);
-  console.log(`  GET/POST http://localhost:${PORT}/customers  → Customer Service (5002)`);
-  console.log(`  GET/POST http://localhost:${PORT}/orders     → Order Service (5004)`);
-  console.log(`  GET/POST http://localhost:${PORT}/inventory  → Inventory Service (5003)`);
+  console.log(
+    `  GET/POST http://localhost:${PORT}/products   → Product Service (5001)`,
+  );
+  console.log(
+    `  GET/POST http://localhost:${PORT}/customers  → Customer Service (5002)`,
+  );
+  console.log(
+    `  GET/POST http://localhost:${PORT}/orders     → Order Service (5004)`,
+  );
+  console.log(
+    `  GET/POST http://localhost:${PORT}/inventory  → Inventory Service (5003)`,
+  );
   console.log('\n📚 Swagger Documentation:');
   console.log(`  http://localhost:${PORT}/api`);
   console.log('\nTest: curl http://localhost:3000/products\n');
