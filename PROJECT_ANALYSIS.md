@@ -333,6 +333,7 @@ MongoDB Cluster
 ```bash
 cd api-gateway && npm install
 cd ../customer-service && npm install
+cd ../product-service && npm install
 cd ../inventory-service && npm install
 cd ../order-service && npm install
 ```
