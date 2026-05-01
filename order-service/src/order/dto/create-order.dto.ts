@@ -30,19 +30,19 @@ export class CreateOrderDto {
   @ApiProperty({ example: '65f1af218fa9a20ecf2f5c91' })
   @IsString()
   @MaxLength(64)
-  customerId: string;
+  customerId!: string;
 
   @ApiProperty({ example: '65f1bf218fa9a20ecf2f5c99' })
   @IsString()
   @MaxLength(64)
-  productId: string;
+  productId!: string;
 
   @ApiProperty({ example: 2 })
   @Type(() => Number)
   @IsNumber()
   @Min(1)
   @Max(100000)
-  quantity: number;
+  quantity!: number;
 
   @ApiPropertyOptional({ enum: OrderStatus, default: OrderStatus.PENDING })
   @IsOptional()

@@ -19,15 +19,15 @@ export class CreateCustomerDto {
   @IsString()
   @MinLength(2)
   @MaxLength(120)
-  name: string;
+  name!: string;
 
   @ApiProperty({ example: 'john@example.com' })
   @IsEmail()
-  email: string;
+  email!: string;
 
   @ApiProperty({ example: '+14155552671' })
   @IsPhoneNumber()
-  phone: string;
+  phone!: string;
 
   @ApiPropertyOptional({ example: 'No 12, Main Street' })
   @IsOptional()

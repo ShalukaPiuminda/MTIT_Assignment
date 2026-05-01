@@ -17,20 +17,20 @@ export class CreateProductDto {
   @IsString()
   @MinLength(2)
   @MaxLength(120)
-  name: string;
+  name!: string;
 
   @ApiProperty({ example: 49.99 })
   @Type(() => Number)
   @IsNumber({ maxDecimalPlaces: 2 })
   @Min(0)
   @Max(1000000)
-  price: number;
+  price!: number;
 
   @ApiProperty({ example: 'Ergonomic bluetooth mouse' })
   @IsString()
   @MinLength(5)
   @MaxLength(500)
-  description: string;
+  description!: string;
 
   @ApiPropertyOptional({ example: 'Accessories' })
   @IsOptional()

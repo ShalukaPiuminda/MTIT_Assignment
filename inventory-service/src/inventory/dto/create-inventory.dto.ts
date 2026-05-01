@@ -13,18 +13,18 @@ export class CreateInventoryDto {
   @ApiProperty({ example: '65f1af218fa9a20ecf2f5c91' })
   @IsString()
   @MaxLength(64)
-  productId: string;
+  productId!: string;
 
   @ApiProperty({ example: 100 })
   @Type(() => Number)
   @IsInt()
   @Min(0)
-  quantity: number;
+  quantity!: number;
 
   @ApiProperty({ example: 'Warehouse-A' })
   @IsString()
   @MaxLength(120)
-  warehouseLocation: string;
+  warehouseLocation!: string;
 
   @ApiPropertyOptional({ example: 5, default: 0 })
   @IsOptional()
